@@ -6,6 +6,7 @@
 		{
 			ViewStatesConverters.Register(this);
 			ColorConverters.Register(this);
+			BitmapConverters.Register(this);
 		}
 	}
 }

@@ -58,6 +58,7 @@
     <Compile Include="UI\CGRectConverters.cs" />
     <Compile Include="Foundation\NSDateConverters.cs" />
     <Compile Include="Foundation\NativeConverters.cs" />
+    <Compile Include="UI\UIImageConverters.cs" />
   </ItemGroup>
   <Import Project="..\Transmute.Shared\Transmute.Shared.projitems" Label="Shared" Condition="Exists('..\Transmute.Shared\Transmute.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

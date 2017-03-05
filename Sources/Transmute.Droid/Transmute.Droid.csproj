@@ -47,6 +47,7 @@
     <Compile Include="Transmute.Platform.cs" />
     <Compile Include="UI\ColorConverters.cs" />
     <Compile Include="UI\ViewStatesConverters.cs" />
+    <Compile Include="UI\BitmapConverters.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

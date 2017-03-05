@@ -7,6 +7,8 @@
 	{
 		public static void Register(Transmuter transmuter)
 		{
+			transmuter.Register(FromBytes());
+			transmuter.Register(ToBytes());
 			transmuter.Register(FromInt());
 			transmuter.Register(ToInt());
 			transmuter.Register(FromBool());
@@ -34,6 +36,29 @@
 		 });
 
 		#endregion
+
+		#region bytes
+
+		public static IConverter<byte[], UIColor> FromBytes() => new RelayConverter<byte[], UIColor>((value) =>
+		 {
+			 var a = ((nfloat)value[0]) / 255.0f;
+			 var r = ((nfloat)value[1]) / 255.0f;
+			 var g = ((nfloat)value[2]) / 255.0f;
+			 var b = ((nfloat)value[3]) / 255.0f;
+			 return UIColor.FromRGBA(r, g, b, a);
+		 });
+
+		public static IConverter<UIColor, byte[]> ToBytes() => new RelayConverter<UIColor, byte[]>((value) =>
+		 {
+			 var a = (byte)(value.CGColor.Alpha * 255);
+			 var r = (byte)(value.CGColor.Components[0] * 255);
+			 var g = (byte)(value.CGColor.Components[1] * 255);
+			 var b = (byte)(value.CGColor.Components[2] * 255);
+			return new [] { a, r, g, b };
+		 });
+
+		#endregion
+
 
 		#region bool
 

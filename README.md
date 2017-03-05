@@ -100,8 +100,11 @@ T4 t4 = Transmuter.Default.Convert<T4>(t1); // T1 -> T2,T2 -> T3,T3 -> T4
 | float[]         | CGRect        | { x,y,w,h }   |
 | int         | UIColor        | 0xAARRGGBB   |
 | UIColor         | int        | 0xAARRGGBB   |
+| bytes[]         | UIColor        | AA,RR,GG,BB   |
+| UIColor         | bytes[]        | AA,RR,GG,BB   |
 | bool         | UIColor        | true ? UIColor.Green : UIColor.Red   |
 | UIColor         | bool        | value == UIColor.Green   |
+| string         | UIImage        | NSData.FromFile -> UIImage.LoadFromData   |
 
 **Xamarin.Android**
 
@@ -111,11 +114,15 @@ T4 t4 = Transmuter.Default.Convert<T4>(t1); // T1 -> T2,T2 -> T3,T3 -> T4
 | ViewStates         | bool        | value == ViewStates.Visible   |
 | int         | Color        | 0xAARRGGBB   |
 | Color         | int        | 0xAARRGGBB   |
+| bytes[]         | Color        | AA,RR,GG,BB   |
+| Color         | bytes[]        | AA,RR,GG,BB   |
+| string         | Bitmap        | BitmapFactory.DecodeFile   |
 
 
 ## Roadmap / Ideas
 
 * Add collection conversion
+* Manage conversion errors
 
 ### Contributions
 

@@ -7,6 +7,7 @@
 			NSDateConverters.Register(this);
 			UIColorConverters.Register(this);
 			CGRectConverters.Register(this);
+			UIImageConverters.Register(this);
 		}
 	}
 }

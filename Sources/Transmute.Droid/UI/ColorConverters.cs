@@ -6,6 +6,8 @@
 	{
 		public static void Register(Transmuter transmuter)
 		{
+			transmuter.Register(FromBytes());
+			transmuter.Register(ToBytes());
 			transmuter.Register(FromInt());
 			transmuter.Register(ToInt());
 			transmuter.Register(FromBool());
@@ -30,6 +32,28 @@
 			 var g =(int)value.G;
 			 var b = (int)value.B;
 			 return (a << 32) + (r << 16) + (g << 8) + b;
+		 });
+
+		#endregion
+
+		#region bytes
+
+		public static IConverter<byte[], Color> FromBytes() => new RelayConverter<byte[], Color>((value) =>
+		 {
+			 var a = value[0];
+			 var r = value[1];
+			 var g = value[2];
+			 var b = value[3];
+			 return Color.Argb(a, r, g, b);
+		 });
+
+		public static IConverter<Color, byte[]> ToBytes() => new RelayConverter<Color, byte[]>((value) =>
+		 {
+			 var a = value.A;
+			 var r = value.R;
+			 var g = value.G;
+			 var b = value.B;
+			 return new[] { a, r, g, b };
 		 });
 
 		#endregion
