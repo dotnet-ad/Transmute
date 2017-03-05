@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Transmute.Droid.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Transmute.Resource", IsApplication=false)]
 
-namespace Transmute.Droid
+namespace Transmute
 {
 	
 	

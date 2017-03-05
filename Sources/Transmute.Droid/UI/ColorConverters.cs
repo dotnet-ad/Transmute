@@ -22,7 +22,7 @@
 			 var r = (value & 0x00FF00000) >> 16;
 			 var g = (value & 0x0000FF00) >> 8;
 			 var b = (value & 0x000000FF);
-			return Color.Argb(a,r,g,b);
+			return Color.Argb((int)a,r,g,b);
 		 });
 
 		public static IConverter<Color, int> ToInt() => new RelayConverter<Color, int>((value) =>

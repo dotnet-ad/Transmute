@@ -9,6 +9,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Transmute.Shared", "Transmu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmute.Droid", "Transmute.Droid\Transmute.Droid.csproj", "{D1C7C371-9507-4E7C-8A67-4517A6900D01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmute.Test", "Transmute.Test\Transmute.Test.csproj", "{C3798EEE-51BB-453F-A868-E3C24D6165AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +29,9 @@ Global
 		{D1C7C371-9507-4E7C-8A67-4517A6900D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1C7C371-9507-4E7C-8A67-4517A6900D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1C7C371-9507-4E7C-8A67-4517A6900D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3798EEE-51BB-453F-A868-E3C24D6165AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3798EEE-51BB-453F-A868-E3C24D6165AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3798EEE-51BB-453F-A868-E3C24D6165AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3798EEE-51BB-453F-A868-E3C24D6165AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
