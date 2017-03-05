@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\NumericConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateTimeConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Generic\ToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\ArrayConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Generic\" />

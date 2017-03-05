@@ -38,5 +38,19 @@
 			transmuter.Register<int, float>(x => 50.1f);
 			Assert.AreEqual(transmuter.Convert<float>(5), 50.1f);
 		}
+
+		[Test()]
+		public void Convert_Arrays_ConvertsAllItems()
+		{
+			var expected = new[] { "10", "11", "12" };
+
+			var source = new[] { 10, 11, 12 };
+			var target = transmuter.Convert<string[]>(source);
+
+			Assert.AreEqual(expected.Length, target.Length);
+			Assert.AreEqual(expected[0], target[0]);
+			Assert.AreEqual(expected[1], target[1]);
+			Assert.AreEqual(expected[2], target[2]);
+		}
 	}
 }

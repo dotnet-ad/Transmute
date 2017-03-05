@@ -49,17 +49,30 @@
 			{
 				IConverter converter;
 
+				// Referenced converter
 				if(targets.TryGetValue(source, out converter))
 				{
 					return new KeyValuePair<bool, IConverter>(false, converter);
 				}
 
+				// Composability
 				foreach (var item in targets)
 				{
 					converter = FindConverter(source, item.Key).Value;
 					if (converter != null)
 						return new KeyValuePair<bool, IConverter>(true, new ChainConverter(converter, item.Value));
 				}
+			}
+
+			// Arrays
+			if(source.IsArray && target.IsArray) // TODO same for all collections
+			{
+				var itemConverter = this.GetConverter(source.GetElementType(), target.GetElementType());
+				if(itemConverter != null)
+				{
+					return new KeyValuePair<bool, IConverter>(true, new ArrayConverter(itemConverter));
+				}
+				return new KeyValuePair<bool, IConverter>(false, null);
 			}
 
 			return new KeyValuePair<bool, IConverter>(false, null);
