@@ -4,6 +4,7 @@
 	{
 		public void RegisterPlatform()
 		{
+			NativeConverters.Register(this);
 			NSDateConverters.Register(this);
 			UIColorConverters.Register(this);
 			CGRectConverters.Register(this);
