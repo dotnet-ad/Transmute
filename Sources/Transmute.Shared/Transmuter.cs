@@ -5,6 +5,14 @@
 
 	public partial class Transmuter
 	{
+		#region Default instance
+
+		public static Lazy<Transmuter> instance = new Lazy<Transmuter>(() => new Transmuter());
+
+		public static Transmuter Default => instance.Value;
+
+		#endregion
+
 		public Transmuter()
 		{
 			this.RegisterBase();
