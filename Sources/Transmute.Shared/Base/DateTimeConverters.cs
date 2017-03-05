@@ -1,7 +1,6 @@
 ﻿namespace Transmute
 {
 	using System;
-	using System.Linq;
 
 	public static class DateTimeConverters
 	{
@@ -9,6 +8,7 @@
 		{
 			transmuter.Register(FromTimestamp());
 			transmuter.Register(ToTimestamp());
+			transmuter.Register(FromString());
 		}
 
 		#region timestamp
@@ -22,6 +22,12 @@
 		 {
 			 var ts = (value.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc));
 			 return (long)ts.TotalMilliseconds;
+		 });
+
+
+		public static IConverter<string, DateTime> FromString() => new RelayConverter<string, DateTime>((value) =>
+		 {
+			return DateTime.Parse(value);
 		 });
 
 		#endregion
