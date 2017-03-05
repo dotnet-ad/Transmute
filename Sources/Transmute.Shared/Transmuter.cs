@@ -22,29 +22,42 @@
 			return this;
 		}
 
-		private IConverter FindConverter(Type source, Type target)
+		public Transmuter Register<TSource,TTarget>(Func<TSource,TTarget> convert)
+		{
+			return this.Register(new RelayConverter<TSource,TTarget>(convert));
+		}
+
+		private KeyValuePair<bool,IConverter> FindConverter(Type source, Type target)
 		{
 			var targets = this.converters.Where(x => x.Target == target);
 
-			if (!targets.Any())
-				return null;
-
-			var converter = targets.FirstOrDefault(x => x.Source == source);
-
-			if (converter != null)
-				return converter;
-
-			foreach (var item in targets)
+			if (targets.Any())
 			{
-				converter = FindConverter(source, item.Source);
+				var converter = targets.FirstOrDefault(x => x.Source == source);
+
 				if (converter != null)
-					return new ChainConverter(converter, item);
+					return new KeyValuePair<bool, IConverter>(false, converter);
+
+				foreach (var item in targets)
+				{
+					converter = FindConverter(source, item.Source).Value;
+					if (converter != null)
+						return new KeyValuePair<bool, IConverter>(true, new ChainConverter(converter, item));
+				}
 			}
 
-			return null;
+			return new KeyValuePair<bool, IConverter>(false, null);
 		}
 
-		public IConverter GetConverter(Type source, Type target) => this.FindConverter(source, target);
+		public IConverter GetConverter(Type source, Type target)
+		{
+			var result = this.FindConverter(source, target);
+
+			if (result.Key)
+				this.Register(result.Value);
+			
+			return result.Value;
+		}
 
 		public IConverter<TSource,TTarget> GetConverter<TSource,TTarget>()
 		{

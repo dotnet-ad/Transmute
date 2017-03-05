@@ -1,8 +1,8 @@
-﻿using System;
-using UIKit;
-
-namespace Transmute
+﻿namespace Transmute
 {
+	using System;
+	using UIKit;
+
 	public static class UIColorConverters
 	{
 		public static void Register(Transmuter transmuter)

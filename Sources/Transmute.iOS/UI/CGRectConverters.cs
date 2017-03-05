@@ -1,9 +1,7 @@
-﻿using System;
-using CoreGraphics;
-using System.Linq;
-
-namespace Transmute
+﻿namespace Transmute
 {
+	using CoreGraphics;
+
 	public static class CGRectConverters
 	{
 		public static void Register(Transmuter transmuter)
