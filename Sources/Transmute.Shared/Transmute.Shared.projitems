@@ -21,9 +21,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateTimeConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Generic\ToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Generic\ArrayConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TwoWays\ITwoWayConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TwoWays\TwoWayConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Generic\" />
     <Folder Include="$(MSBuildThisFileDirectory)Base\" />
+    <Folder Include="$(MSBuildThisFileDirectory)TwoWays\" />
   </ItemGroup>
 </Project>
