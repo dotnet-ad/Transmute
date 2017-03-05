@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Transmute</id>
+    <version>$version$</version>
+    <title>Transmute : data conversion</title>
+    <authors>Aloïs Deniel</authors>
+    <owners>Aloïs Deniel</owners>
+    <licenseUrl>https://github.com/aloisdeniel/Transmute/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/aloisdeniel/Transmute/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/aloisdeniel/Transmute/master/Documentation/Logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>It's very common to convert data from a type to another and there's plenties of APIs to achieve it in .NET. Transmute was created to have a single centralized channel for all conversions.</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>data conversion converter transmute</tags>
+  </metadata>
+   <files>
+     <!-- PCL -->
+     <file src="..\Sources\Transmute\bin\Release\Transmute.dll" target="lib\portable-net45+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Transmute.dll" />
+     
+     <!-- Standard 1.1 -->
+     <file src="..\Sources\Transmute.Standard\bin\Release\netstandard1.1\Transmute.dll" target="lib\netstandard1.1\Transmute.dll" />
+
+     <!-- iOS -->
+     <file src="..\Sources\Transmute.iOS\bin\Release\Transmute.dll" target="lib\Xamarin.iOS10\Transmute.dll" />
+
+     <!-- Android -->
+     <file src="..\Sources\Transmute.Droid\bin\Release\Transmute.dll" target="lib\MonoAndroid10\Transmute.dll" />
+   </files>
+</package>

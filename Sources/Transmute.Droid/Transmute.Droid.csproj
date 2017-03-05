@@ -48,6 +48,9 @@
     <Compile Include="UI\ColorConverters.cs" />
     <Compile Include="UI\ViewStatesConverters.cs" />
     <Compile Include="UI\BitmapConverters.cs" />
+    <Compile Include="..\Transmute.iOS\Helpers\FileCache.cs">
+      <Link>Helpers\FileCache.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -57,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UI\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="..\Transmute.Shared\Transmute.Shared.projitems" Label="Shared" Condition="Exists('..\Transmute.Shared\Transmute.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

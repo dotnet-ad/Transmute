@@ -133,6 +133,7 @@ var target = transmuter.Convert<string[]>(source); // { "10", "11", "12" }
 
 * Add collection conversion
 * Manage conversion errors
+* Adding Windows platform (*with IValueConverter builder*)
 
 ### Contributions
 

@@ -7,7 +7,7 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>Transmute.iOS</RootNamespace>
-    <AssemblyName>Transmute.iOS</AssemblyName>
+    <AssemblyName>Transmute</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,6 +50,7 @@
     <Folder Include="Resources\" />
     <Folder Include="UI\" />
     <Folder Include="Foundation\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Foundation\NSDateConverters.cs" />
     <Compile Include="Foundation\NativeConverters.cs" />
     <Compile Include="UI\UIImageConverters.cs" />
+    <Compile Include="Helpers\FileCache.cs" />
   </ItemGroup>
   <Import Project="..\Transmute.Shared\Transmute.Shared.projitems" Label="Shared" Condition="Exists('..\Transmute.Shared\Transmute.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
