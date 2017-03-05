@@ -17,16 +17,21 @@
     <Compile Include="$(MSBuildThisFileDirectory)Generic\TypedConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Generic\CastConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Transmuter.Base.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\NumericConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\BaseConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateTimeConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Generic\ToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Generic\ArrayConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TwoWays\ITwoWayConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TwoWays\TwoWayConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\StringConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\IdentityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\IConverterExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ITwoWayConverterExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Generic\" />
     <Folder Include="$(MSBuildThisFileDirectory)Base\" />
     <Folder Include="$(MSBuildThisFileDirectory)TwoWays\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
   </ItemGroup>
 </Project>

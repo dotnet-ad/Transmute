@@ -1,4 +1,6 @@
-﻿namespace Transmute
+﻿using Transmute.Transmute;
+
+namespace Transmute
 {
 	using System;
 	using System.Collections.Generic;
@@ -19,38 +21,42 @@
 			this.RegisterPlatform();
 		}
 
-		private Dictionary<Type,Dictionary<Type,IConverter>> converters = new Dictionary<Type, Dictionary<Type, IConverter>>();
+		private Dictionary<Type, Dictionary<Tuple<Type,string>,IConverter>> converters = new Dictionary<Type, Dictionary<Tuple<Type, string>, IConverter>>();
 
-		public Transmuter Register(IConverter  converter)
+		public Transmuter Register(IConverter converter, string name = null)
 		{
-			Dictionary<Type, IConverter> fromTarget;
+			Dictionary<Tuple<Type, string>, IConverter> targets;
 
-			if(!converters.TryGetValue(converter.Target, out fromTarget))
+			if(!converters.TryGetValue(converter.Target, out targets))
 			{
-				fromTarget = new Dictionary<Type, IConverter>();
-				converters[converter.Target] = fromTarget;
+				targets = new Dictionary<Tuple<Type, string>, IConverter>();
+				converters[converter.Target] = targets;
 			}
 
-			fromTarget[converter.Source] = converter;
 
-			return this;
+			var key = new Tuple<Type, string>(converter.Source, name);
+			targets[key] = converter;
+
+			return this; 
 		}
 
-		public Transmuter Register<TSource,TTarget>(Func<TSource,TTarget> convert)
+		public Transmuter Register<TSource,TTarget>(Func<TSource,TTarget> convert, string name = null)
 		{
-			return this.Register(new RelayConverter<TSource,TTarget>(convert));
+			return this.Register(new RelayConverter<TSource,TTarget>(convert), name);
 		}
 
-		private KeyValuePair<bool,IConverter> FindConverter(Type source, Type target)
+		private KeyValuePair<bool,IConverter> FindConverter(Type source, Type target, string name = null)
 		{
-			Dictionary<Type, IConverter> targets;
+			Dictionary<Tuple<Type, string>, IConverter> targets;
 
 			if (converters.TryGetValue(target, out targets))
 			{
+				var key = new Tuple<Type, string>(source, name); 
+
 				IConverter converter;
 
 				// Referenced converter
-				if(targets.TryGetValue(source, out converter))
+				if (targets.TryGetValue(key, out converter))
 				{
 					return new KeyValuePair<bool, IConverter>(false, converter);
 				}
@@ -58,7 +64,7 @@
 				// Composability
 				foreach (var item in targets)
 				{
-					converter = FindConverter(source, item.Key).Value;
+					converter = FindConverter(source, item.Key.Item1, name).Value;
 					if (converter != null)
 						return new KeyValuePair<bool, IConverter>(true, new ChainConverter(converter, item.Value));
 				}
@@ -78,27 +84,47 @@
 			return new KeyValuePair<bool, IConverter>(false, null);
 		}
 
-		public IConverter GetConverter(Type source, Type target)
+		public IConverter GetConverter(Type source, Type target, string name = null)
 		{
-			var result = this.FindConverter(source, target);
+			var result = this.FindConverter(source, target, name);
+
+			if(result.Value == null)
+			{
+				if (source == target && name == null)
+				{
+					result = new KeyValuePair<bool, IConverter>(true, new IdentityConverter(source));
+				}
+				else if (target == typeof(string))
+				{
+					result = new KeyValuePair<bool, IConverter>(true, new ToStringConverter(source));
+				}
+				else throw new ArgumentException($"No registration for converting values from {source} to {target}");
+			}
 
 			if (result.Key)
-				this.Register(result.Value);
+				this.Register(result.Value, name);
 			
 			return result.Value;
 		}
 
-		public IConverter<TSource,TTarget> GetConverter<TSource,TTarget>()
+		public IConverter<TSource,TTarget> GetConverter<TSource,TTarget>(string name = null)
 		{
-			var converter = this.GetConverter(typeof(TSource), typeof(TTarget));
+			var converter = this.GetConverter(typeof(TSource), typeof(TTarget), name);
 			return converter as IConverter<TSource, TTarget> ?? new TypedConverter<TSource, TTarget>(converter);
 		}
 
-		public TTarget Convert<TTarget>(object source) => (TTarget)this.Convert(source, typeof(TTarget));
-
-		public object Convert(object source, Type target)
+		public ITwoWayConverter<TSource, TTarget> GetTwoWayConverter<TSource, TTarget>(string name = null)
 		{
-			var converter = this.GetConverter(source.GetType(), target);
+			var forward = this.GetConverter<TSource, TTarget>(name);
+			var back = this.GetConverter<TTarget, TSource>(name);
+			return new TwoWayConverter<TSource, TTarget>(forward, back);
+		}
+
+		public TTarget Convert<TTarget>(object source, string name = null) => (TTarget)this.Convert(source, typeof(TTarget), name);
+
+		public object Convert(object source, Type target, string name = null)
+		{
+			var converter = this.GetConverter(source.GetType(), target, name);
 			return converter.Convert(source);
 		}
 	}

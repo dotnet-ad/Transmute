@@ -1,5 +1,4 @@
-﻿using System;
-namespace Transmute
+﻿namespace Transmute
 {
 	public interface ITwoWayConverter<TSource,TTarget>
 	{

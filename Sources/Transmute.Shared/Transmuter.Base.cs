@@ -4,7 +4,8 @@
 	{
 		public void RegisterBase()
 		{
-			NumericConverters.Register(this);
+			BaseConverters.Register(this);
+			StringConverters.Register(this);
 			DateTimeConverters.Register(this);
 		}
 	}

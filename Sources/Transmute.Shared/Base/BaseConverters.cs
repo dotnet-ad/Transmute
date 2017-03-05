@@ -2,7 +2,7 @@
 {
 	using System;
 
-	public static class NumericConverters
+	public static class BaseConverters
 	{
 		public static void Register(Transmuter transmuter)
 		{
@@ -35,6 +35,7 @@
 			//bool
 			transmuter.Register(new RelayConverter<int, bool>(x => x > 0));
 			transmuter.Register(new RelayConverter<bool, int>(x => x ? 1 : 0));
+			transmuter.Register(new RelayConverter<bool, bool>(x => !x), "invert");
 
 			//ToString
 			transmuter.Register(new ToStringConverter<short>());
