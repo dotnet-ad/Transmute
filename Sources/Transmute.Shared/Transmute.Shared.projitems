@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{83EE696C-B841-40DD-9508-87A3967428EE}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Transmute</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Transmuter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\ChainConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\RelayConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\TypedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\CastConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Transmuter.Base.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\NumericConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\DateTimeConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generic\ToStringConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Generic\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Base\" />
+  </ItemGroup>
+</Project>

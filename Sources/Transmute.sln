@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmute", "Transmute\Transmute.csproj", "{3B864286-0F16-45CB-9659-7D09E196DDBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmute.iOS", "Transmute.iOS\Transmute.iOS.csproj", "{7A54E849-BBAD-47F1-8726-9341025B053B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Transmute.Shared", "Transmute.Shared\Transmute.Shared.shproj", "{83EE696C-B841-40DD-9508-87A3967428EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B864286-0F16-45CB-9659-7D09E196DDBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B864286-0F16-45CB-9659-7D09E196DDBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B864286-0F16-45CB-9659-7D09E196DDBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B864286-0F16-45CB-9659-7D09E196DDBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A54E849-BBAD-47F1-8726-9341025B053B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A54E849-BBAD-47F1-8726-9341025B053B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A54E849-BBAD-47F1-8726-9341025B053B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A54E849-BBAD-47F1-8726-9341025B053B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
