@@ -47,6 +47,11 @@ namespace Transmute
 
 		private KeyValuePair<bool,IConverter> FindConverter(Type source, Type target, string name = null)
 		{
+			if(source == target && name == null)
+			{
+				return new KeyValuePair<bool, IConverter>(true, new IdentityConverter(source));
+			}
+
 			Dictionary<Tuple<Type, string>, IConverter> targets;
 
 			if (converters.TryGetValue(target, out targets))
