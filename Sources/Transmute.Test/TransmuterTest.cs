@@ -58,6 +58,7 @@
 		public void Convert_ToString_Succeed()
 		{
 			Assert.AreEqual("42", transmuter.Convert<string>(42));
+			Assert.NotNull(transmuter.Convert<string>(DateTime.Now));
 		}
 
 		[Test()]

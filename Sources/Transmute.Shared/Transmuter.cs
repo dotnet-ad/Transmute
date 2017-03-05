@@ -93,7 +93,7 @@ namespace Transmute
 		{
 			var result = this.FindConverter(source, target, name);
 
-			if(result.Value == null)
+			if (result.Value == null)
 			{
 				if (source == target && name == null)
 				{
@@ -108,7 +108,7 @@ namespace Transmute
 
 			if (result.Key)
 				this.Register(result.Value, name);
-			
+
 			return result.Value;
 		}
 

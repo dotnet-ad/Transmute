@@ -9,6 +9,7 @@
 			transmuter.Register(FromTimestamp());
 			transmuter.Register(ToTimestamp());
 			transmuter.Register(FromString());
+			transmuter.Register(new ToStringConverter<DateTime>());
 		}
 
 		#region timestamp

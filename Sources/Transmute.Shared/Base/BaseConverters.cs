@@ -18,7 +18,7 @@
 			transmuter.Register(new RelayConverter<byte[], long>(x => BitConverter.ToInt64(x, 0)));
 			transmuter.Register(new RelayConverter<byte[], float>(x => BitConverter.ToSingle(x, 0)));
 			transmuter.Register(new RelayConverter<byte[], double>(x => BitConverter.ToDouble(x, 0)));
-			transmuter.Register(new RelayConverter<byte[], bool>(x => BitConverter.ToBoolean(x,0)));
+			transmuter.Register(new RelayConverter<byte[], bool>(x => BitConverter.ToBoolean(x, 0)));
 
 			//Casts
 			transmuter.Register(new CastConverter<int, short>());
@@ -36,14 +36,6 @@
 			transmuter.Register(new RelayConverter<int, bool>(x => x > 0));
 			transmuter.Register(new RelayConverter<bool, int>(x => x ? 1 : 0));
 			transmuter.Register(new RelayConverter<bool, bool>(x => !x), "invert");
-
-			//ToString
-			transmuter.Register(new ToStringConverter<short>());
-			transmuter.Register(new ToStringConverter<int>());
-			transmuter.Register(new ToStringConverter<long>());
-			transmuter.Register(new ToStringConverter<float>());
-			transmuter.Register(new ToStringConverter<double>());
-			transmuter.Register(new ToStringConverter<bool>());
 		}
 	}
 }
