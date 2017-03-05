@@ -8,18 +8,18 @@
 		public static void Register(Transmuter transmuter)
 		{
 			//Casts
-			transmuter.Register(new CastConverter<nint, int>());
-			transmuter.Register(new CastConverter<int, nint>());
-			transmuter.Register(new CastConverter<nint, float>());
-			transmuter.Register(new CastConverter<float, nint>());
-			transmuter.Register(new CastConverter<nint, double>());
-			transmuter.Register(new CastConverter<double, nint>());
-			transmuter.Register(new CastConverter<nfloat, int>());
-			transmuter.Register(new CastConverter<int, nfloat>());
-			transmuter.Register(new CastConverter<nfloat, float>());
-			transmuter.Register(new CastConverter<float, nfloat>());
-			transmuter.Register(new CastConverter<nfloat, double>());
-			transmuter.Register(new CastConverter<double, nfloat>());
+			transmuter.Register(new RelayConverter<nint, int>(x => (int)x));
+			transmuter.Register(new RelayConverter<int, nint>(x => new nint(x)));
+			transmuter.Register(new RelayConverter<nint, float>(x => (int)x));
+			transmuter.Register(new RelayConverter<float, nint>(x => new nint((int)x)));
+			transmuter.Register(new RelayConverter<nint, double>(x => (int)x));
+			transmuter.Register(new RelayConverter<double, nint>(x => new nint((int)x)));
+			transmuter.Register(new RelayConverter<nfloat, int>(x => (int)x));
+			transmuter.Register(new RelayConverter<int, nfloat>(x => new nfloat(x)));
+			transmuter.Register(new RelayConverter<nfloat, float>(x => (float)x));
+			transmuter.Register(new RelayConverter<float, nfloat>(x => new nfloat(x)));
+			transmuter.Register(new RelayConverter<nfloat, double>(x => x));
+			transmuter.Register(new RelayConverter<double, nfloat>(x => new nfloat(x)));
 		}
 	}
 }
