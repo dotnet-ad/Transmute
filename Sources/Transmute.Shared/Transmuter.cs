@@ -1,7 +1,6 @@
 ﻿namespace Transmute
 {
 	using System;
-	using System.Linq;
 	using System.Collections.Generic;
 
 	public partial class Transmuter
@@ -12,13 +11,20 @@
 			this.RegisterPlatform();
 		}
 
-		private List<IConverter> converters = new List<IConverter>();
+		private Dictionary<Type,Dictionary<Type,IConverter>> converters = new Dictionary<Type, Dictionary<Type, IConverter>>();
 
 		public Transmuter Register(IConverter  converter)
 		{
-			var existing = converters.FindIndex(x => x.HasSameTypes(converter));
-			if (existing >= 0) this.converters.RemoveAt(existing);
-			this.converters.Add(converter);
+			Dictionary<Type, IConverter> fromTarget;
+
+			if(!converters.TryGetValue(converter.Target, out fromTarget))
+			{
+				fromTarget = new Dictionary<Type, IConverter>();
+				converters[converter.Target] = fromTarget;
+			}
+
+			fromTarget[converter.Source] = converter;
+
 			return this;
 		}
 
@@ -29,20 +35,22 @@
 
 		private KeyValuePair<bool,IConverter> FindConverter(Type source, Type target)
 		{
-			var targets = this.converters.Where(x => x.Target == target);
+			Dictionary<Type, IConverter> targets;
 
-			if (targets.Any())
+			if (converters.TryGetValue(target, out targets))
 			{
-				var converter = targets.FirstOrDefault(x => x.Source == source);
+				IConverter converter;
 
-				if (converter != null)
+				if(targets.TryGetValue(source, out converter))
+				{
 					return new KeyValuePair<bool, IConverter>(false, converter);
+				}
 
 				foreach (var item in targets)
 				{
-					converter = FindConverter(source, item.Source).Value;
+					converter = FindConverter(source, item.Key).Value;
 					if (converter != null)
-						return new KeyValuePair<bool, IConverter>(true, new ChainConverter(converter, item));
+						return new KeyValuePair<bool, IConverter>(true, new ChainConverter(converter, item.Value));
 				}
 			}
 

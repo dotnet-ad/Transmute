@@ -37,7 +37,9 @@
 			transmuter.Register(new RelayConverter<bool, int>(x => x ? 1 : 0));
 
 			//ToString
+			transmuter.Register(new ToStringConverter<short>());
 			transmuter.Register(new ToStringConverter<int>());
+			transmuter.Register(new ToStringConverter<long>());
 			transmuter.Register(new ToStringConverter<float>());
 			transmuter.Register(new ToStringConverter<double>());
 			transmuter.Register(new ToStringConverter<bool>());

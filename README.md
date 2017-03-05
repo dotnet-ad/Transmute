@@ -49,10 +49,73 @@ This conversions will succeed :
 T1 t1 = ...;
 T4 t4 = Transmuter.Default.Convert<T4>(t1); // T1 -> T2,T2 -> T3,T3 -> T4
 ```
+### Default converters
+
+**All platforms**
+
+| From          | To            | Description   |
+| ------------- |---------------|---------------|
+| short         | byte[]        | BitConverter   |
+| int         | byte[]        | BitConverter   |
+| long         | byte[]        | BitConverter   |
+| float         | byte[]        | BitConverter   |
+| double         | byte[]        | BitConverter   |
+| bool         | byte[]        | BitConverter   |
+| byte[]         | short        | BitConverter   |
+| byte[]         | int        | BitConverter   |
+| byte[]         | long        | BitConverter   |
+| byte[]         | float        | BitConverter   |
+| byte[]         | double        | BitConverter   |
+| byte[]         | bool        | BitConverter   |
+| int         | short        | Convert.ChangeType   |
+| short         | int        | Convert.ChangeType   |
+| int         | long        | Convert.ChangeType   |
+| long         | int        | Convert.ChangeType   |
+| int         | float        | Convert.ChangeType   |
+| float         | int        | Convert.ChangeType   |
+| int         | double        | Convert.ChangeType   |
+| double         | int        | Convert.ChangeType   |
+| float         | double        | Convert.ChangeType   |
+| double         | float        | Convert.ChangeType   |
+| int         | bool        | > 0 ?    |
+| bool         | int        | true ? 1 : 0    |
+| short         | string        | ToString   |
+| int         | string        | ToString   |
+| long         | string        | ToString   |
+| float         | string        | ToString   |
+| double         | string        | ToString   |
+| bool         | string        | ToString   |
+| long         | DateTime        | from timestamp (ms)   |
+| DateTime         | long        | to timestamp (ms)   |
+
+**Xamarin.iOS**
+
+| From          | To            | Description   |
+| ------------- |---------------|---------------|
+| DateTime         | NSDate        | conversion   |
+| NSDate         | DateTime        | conversion   |
+| CGRect         | int[]        | { x,y,w,h }   |
+| int[]         | CGRect        | { x,y,w,h }   |
+| CGRect         | float[]        | { x,y,w,h }   |
+| float[]         | CGRect        | { x,y,w,h }   |
+| int         | UIColor        | 0xAARRGGBB   |
+| UIColor         | int        | 0xAARRGGBB   |
+| bool         | UIColor        | true ? UIColor.Green : UIColor.Red   |
+| UIColor         | bool        | value == UIColor.Green   |
+
+**Xamarin.Android**
+
+| From          | To            | Description   |
+| ------------- |---------------|---------------|
+| bool         | ViewStates        | true ? ViewStates.Visible : ViewStates.Gone   |
+| ViewStates         | bool        | value == ViewStates.Visible   |
+| int         | Color        | 0xAARRGGBB   |
+| Color         | int        | 0xAARRGGBB   |
+
 
 ## Roadmap / Ideas
 
-* Improve performances by sorting converters
+* Add collection conversion
 
 ### Contributions
 
