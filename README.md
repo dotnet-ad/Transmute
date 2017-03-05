@@ -49,6 +49,16 @@ This conversions will succeed :
 T1 t1 = ...;
 T4 t4 = Transmuter.Default.Convert<T4>(t1); // T1 -> T2,T2 -> T3,T3 -> T4
 ```
+
+### Array conversions
+
+If the source type and target type are arrays, and a converter has been registered to convert a source item to a target item, a converter will be available too :
+
+```csharp
+var source = new[] { 10, 11, 12 };
+var target = transmuter.Convert<string[]>(source); // { "10", "11", "12" }
+```
+
 ### Default converters
 
 **All platforms**
